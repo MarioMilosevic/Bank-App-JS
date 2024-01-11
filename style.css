@@ -1,6 +1,6 @@
 :root {
   --primary--color: #606c88;
-  --secondary--color: #c4e0f9;
+  --secondary--color: #434c5f;
   --font--color: #e6e6e6;
 }
 * {
@@ -40,7 +40,6 @@ body {
 
 nav {
   width: 100%;
-  /* border: 1px solid white; */
   height: 10%;
   margin-top: 4rem;
   display: flex;
@@ -49,6 +48,11 @@ nav {
   padding: 0 5rem;
   position: relative;
 }
+
+nav h1 {
+  font-size: 4rem;
+}
+
 nav input {
   border-radius: 2rem;
   padding: 1rem 2rem;
@@ -59,11 +63,10 @@ nav input {
   background-color: var(--primary--color);
   border: 1px solid var(--font--color);
   color: var(--font--color);
-
 }
 
-nav input::placeholder{
-    color: var(--font--color);
+nav input::placeholder {
+  color: var(--font--color);
 }
 
 nav input:last-of-type {
@@ -84,85 +87,140 @@ nav input:last-of-type {
 /* Container */
 
 .container {
-    margin: 5rem auto 0;
-    width: 50%;
+  margin: 5rem auto 0;
+  width: 50%;
 }
 
-.containerInfo{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 3rem;
+.containerInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 3rem;
 }
 
 .containerTransactions {
-    margin-top: 5rem;
-    display: flex;
-    justify-content: space-between;
-    border:1px solid white;
-
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .transactions {
-    width: 47%;
-    height: 50rem;
-    border:1px solid white;
-    border-radius: 2rem;
+  width: 47%;
+  height: 50rem;
+  border: 1px solid white;
+  border-radius: 2rem;
 }
 
 .options {
-    width: 47%;
-    border-radius: 2rem;
-    /* border:1px solid white; */
+  width: 47%;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .transfer {
-    border: 1px solid white;
-    height: 40%;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.6rem;
+  justify-content: space-between;
+  background-color: var(--secondary--color);
+  border-radius: 2rem;
 }
 
-.transferMoneyContainer{
-    height: 70%;
-    border: 1px solid white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.transfer h2,
+.loan h2 {
+  margin-top: 2.5rem;
+  font-size: 2.5rem;
 }
-.inputFields{
-    margin-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid white;
+
+.transferMoneyContainer {
+  height: 70%;
+  display: flex;
+  justify-content: center;
+}
+.inputFields {
+  display: flex;
+  justify-content: space-between;
+  height: 50%;
+  width: 100%;
+  transform: translateY(50%);
 }
 
 .inputFields input {
-    width: 100%;
-    border-radius: 2rem;
-    height: 50%;
-    border: none;
-    margin-bottom: 1rem;
+  width: 90%;
+  border-radius: 2rem;
+  height: 50%;
+  border: none;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .inputFields label {
-    height: 50%;
+  height: 50%;
 }
 
-.transferTo, .transferAmount{
-    display: flex;
-    border:1px solid white;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 1.6rem;
+.transferTo,
+.transferAmount {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 45%;
+  align-items: center;
+  font-size: 1.6rem;
 }
 
 .transferBtn {
-    border-radius: 2rem;
-    width: 10%;
-    cursor: pointer;
-    margin-right: 1rem;
+  border-radius: 2rem;
+  width: 10%;
+  height: 50%;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.loan {
+  background-color: var(--secondary--color);
+  border-radius: 2rem;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.6rem;
+  justify-content: space-between;
+  margin-bottom: 3.5rem;
+}
+
+.loanOptions {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin-bottom: 4rem;
+  height: 50%;
+}
+.loanInputFields {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 80%;
+  align-items: center;
+  font-size: 1.6rem;
+}
+
+.loanInputFields input {
+  width: 90%;
+  border-radius: 2rem;
+  height: 40%;
+  border: none;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.loanBtn {
+  border-radius: 2rem;
+  width: 10%;
+  height: 42%;
+  cursor: pointer;
+  margin-right: 1rem;
+  transform: translateY(50%);
 }
