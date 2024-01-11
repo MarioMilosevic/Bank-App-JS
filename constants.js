@@ -12,6 +12,7 @@ export const constants = () => {
   const transferBtn = document.querySelector(".transferBtn");
   const loanInput = document.querySelector("#loan");
   const loanBtn = document.querySelector(".loanBtn");
+  const transactions = document.querySelector('.transactions')
 
   return {
     welcomeBack,
@@ -25,5 +26,6 @@ export const constants = () => {
     transferBtn,
     loanInput,
     loanBtn,
+    transactions
   };
 };

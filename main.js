@@ -1,6 +1,7 @@
 "use strict";
 import { constants } from "./constants";
 import { Account, AccountManager } from "./classes";
+import { showMovements } from "./helpers";
 
 const account1 = new Account(
   "Mario Milosevic",
@@ -42,6 +43,7 @@ const {
   transferBtn,
   loanInput,
   loanBtn,
+  transactions
 } = constants();
 
 
@@ -59,3 +61,6 @@ navBtn.addEventListener("click", function () {
 
 const login = (accounts) => {
   }
+
+console.log(account1.movements);
+  showMovements(transactions,account1.movements)
