@@ -25,6 +25,7 @@ const account3 = new Account(
 );
 const account4 = new Account("Ethan Miller", [430, 1000, 700, 50, 90], 1, 4444);
 const accounts = [account1,account2,account3, account4]
+
 const accountManager = new AccountManager()
 
 accounts.forEach(account => {
@@ -56,11 +57,21 @@ accounts.forEach((account) => {
 });
 
 navBtn.addEventListener("click", function () {
-  login(accounts);
+  login(accountManager.getAccounts());
+  console.log(nameInput.value)
+  console.log(passwordInput.value)
+  console.log('dugme');
 });
 
 const login = (accounts) => {
+  accounts.forEach(account => {
+    if(account.username === nameInput.value && account.pin === Number(passwordInput.value)){
+      console.log('if',account);
+      // return account
+    }
+  })
   }
+  // treba da uzme od nekog od akaunta username i pasvord od tog unikatnog akaunta i samim tim da ucita njegov movement
 
-console.log(account1.movements);
+// console.log(account1.movements);
   showMovements(transactions,account1.movements)
