@@ -16,10 +16,10 @@
   <body>
     <div id="app">
       <nav>
-        <h1>Welcome back, Mario</h1>
+        <h1 id="welcomeBack">Welcome back, Mario</h1>
         <div class="navInput">
-          <input type="text" placeholder="Name" />
-          <input type="text" placeholder="password" />
+          <input type="text" placeholder="Name" id="nameInput"/>
+          <input type="text" placeholder="password" id="passwordInput"/>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -39,7 +39,7 @@
       <div class="container">
         <div class="containerInfo">
           <h2>Current balance</h2>
-          <p>100000$</p>
+          <p id="currentBalance">100000$</p>
         </div>
         <div class="containerTransactions">
           <div class="transactions"></div>

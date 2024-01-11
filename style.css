@@ -33,7 +33,6 @@ body {
 
 #app {
   width: 100%;
-  height: 100vh;
 }
 
 /* Navigation */
@@ -102,11 +101,12 @@ nav input:last-of-type {
   margin-top: 5rem;
   display: flex;
   justify-content: space-between;
+  height: 50rem;
 }
 
 .transactions {
   width: 47%;
-  height: 50rem;
+  height: 100%;
   border: 1px solid white;
   border-radius: 2rem;
 }
