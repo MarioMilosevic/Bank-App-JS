@@ -14,14 +14,19 @@ export class Account {
 
   totalDeposit() {
     const depositMovements = this.movements.filter((mov) => mov > 0);
-    const sumDeposit = depositMovements.reduce((acc, curr) => acc + curr)
-    return sumDeposit
+    const sumDeposit = depositMovements.reduce((acc, curr) => acc + curr);
+    return sumDeposit;
   }
 
-  totalWithdrawal(){
-    const withdrawalMovements = this.movements.filter((mov) => mov < 0)
-    const sumWithdrawal = withdrawalMovements.reduce((acc, curr) => acc +curr)
-    return sumWithdrawal
+  totalWithdrawal() {
+    const withdrawalMovements = this.movements.filter((mov) => mov < 0);
+    const sumWithdrawal = withdrawalMovements.reduce((acc, curr) => acc + curr);
+    return sumWithdrawal;
+  }
+
+  sort() {
+    const sort = this.movements.sort((a, b) => a - b);
+    return sort
   }
 }
 

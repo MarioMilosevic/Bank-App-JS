@@ -27,6 +27,7 @@ const account4 = new Account("Ethan Miller", [430, 1000, 700, 50, 90], 1, 4444);
 const accounts = [account1, account2, account3, account4];
 
 const accountManager = new AccountManager();
+let acc = "";
 
 accounts.forEach((account) => {
   accountManager.addAccount(account);
@@ -61,14 +62,16 @@ accountManager.getAccounts().forEach((account) => {
 
 navBtn.addEventListener("click", function () {
   const account = login(accountManager.getAccounts());
-  const sumDeposit = account.totalDeposit()
-  inValue.textContent = `${sumDeposit}$`
-  const sumWithdrawal = account.totalWithdrawal()
-  outValue.textContent = `${sumWithdrawal}$`
+  welcomeBack.textContent = `Welcome back, ${account.owner}`
+  const sumDeposit = account.totalDeposit();
+  inValue.textContent = `${sumDeposit}$`;
+  const sumWithdrawal = account.totalWithdrawal();
+  const balance = sumDeposit - (Math.abs(sumWithdrawal))
+  currentBalance.textContent = `${balance}$`
+  outValue.textContent = `${sumWithdrawal}$`;
 });
 
 const login = (accounts) => {
-  let acc = "";
   accounts.forEach((account) => {
     if (
       account.username === nameInput.value &&
@@ -76,13 +79,12 @@ const login = (accounts) => {
     ) {
       container.classList.remove("hidden");
       showMovements(transactions, account.movements);
-      console.log(account);
       acc = account;
     }
   });
   return acc;
 };
-// treba da uzme od nekog od akaunta username i pasvord od tog unikatnog akaunta i samim tim da ucita njegov movement
-
-// console.log(account1.movements);
-console.log(accountManager.getAccounts());
+console.log(acc);
+sortBtn.addEventListener("click", function () {
+  console.log(acc.sort());
+});
