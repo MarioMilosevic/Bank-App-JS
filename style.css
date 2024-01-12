@@ -88,6 +88,11 @@ nav input:last-of-type {
 .container {
   margin: 5rem auto 0;
   width: 50%;
+  transition: all 1s;
+}
+
+.hidden {
+  opacity: 0;
 }
 
 .containerInfo {
@@ -270,10 +275,9 @@ nav input:last-of-type {
 }
 
 .accountInfo {
-  margin-top: 1rem;
+  padding: 1rem 2rem;
   width: 50%;
   display: flex;
-  /* border: 1px solid white; */
   justify-content: space-between;
   align-items: center;
 }
@@ -290,15 +294,17 @@ nav input:last-of-type {
   align-items: center;
 }
 
-.in {
+.inValue {
   color: #399e5a;
 }
 
-.out {
+.outValue {
   color: #ff4a1c;
 }
 
 .sort {
   border-radius: 1rem;
   padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  border: none;
 }

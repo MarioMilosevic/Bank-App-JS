@@ -24,13 +24,13 @@ const account3 = new Account(
   3333
 );
 const account4 = new Account("Ethan Miller", [430, 1000, 700, 50, 90], 1, 4444);
-const accounts = [account1,account2,account3, account4]
+const accounts = [account1, account2, account3, account4];
 
-const accountManager = new AccountManager()
+const accountManager = new AccountManager();
 
-accounts.forEach(account => {
-    accountManager.addAccount(account)
-})
+accounts.forEach((account) => {
+  accountManager.addAccount(account);
+});
 
 const {
   welcomeBack,
@@ -44,11 +44,14 @@ const {
   transferBtn,
   loanInput,
   loanBtn,
-  transactions
+  inValue,
+  outValue,
+  sortBtn,
+  transactions,
+  container,
 } = constants();
 
-
-accounts.forEach((account) => {
+accountManager.getAccounts().forEach((account) => {
   account.username = account.owner
     .toLowerCase()
     .split(" ")
@@ -57,21 +60,29 @@ accounts.forEach((account) => {
 });
 
 navBtn.addEventListener("click", function () {
-  login(accountManager.getAccounts());
-  console.log(nameInput.value)
-  console.log(passwordInput.value)
-  console.log('dugme');
+  const account = login(accountManager.getAccounts());
+  const sumDeposit = account.totalDeposit()
+  inValue.textContent = `${sumDeposit}$`
+  const sumWithdrawal = account.totalWithdrawal()
+  outValue.textContent = `${sumWithdrawal}$`
 });
 
 const login = (accounts) => {
-  accounts.forEach(account => {
-    if(account.username === nameInput.value && account.pin === Number(passwordInput.value)){
-      showMovements(transactions, account.movements)
-      // return account
+  let acc = "";
+  accounts.forEach((account) => {
+    if (
+      account.username === nameInput.value &&
+      account.pin === Number(passwordInput.value)
+    ) {
+      container.classList.remove("hidden");
+      showMovements(transactions, account.movements);
+      console.log(account);
+      acc = account;
     }
-  })
-  }
-  // treba da uzme od nekog od akaunta username i pasvord od tog unikatnog akaunta i samim tim da ucita njegov movement
+  });
+  return acc;
+};
+// treba da uzme od nekog od akaunta username i pasvord od tog unikatnog akaunta i samim tim da ucita njegov movement
 
 // console.log(account1.movements);
-  
+console.log(accountManager.getAccounts());

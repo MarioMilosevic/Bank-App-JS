@@ -14,9 +14,9 @@
     <title>Bank app</title>
   </head>
   <body>
-    <div id="app">
+    <main id="app">
       <nav>
-        <h1 id="welcomeBack">Welcome back, Mario</h1>
+        <h1 id="welcomeBack">Login to get started</h1>
         <div class="navInput">
           <input type="text" placeholder="Name" id="nameInput" />
           <input type="text" placeholder="Password" id="passwordInput" />
@@ -36,7 +36,7 @@
           </svg>
         </div>
       </nav>
-      <div class="container">
+      <div class="container hidden">
         <div class="containerInfo">
           <h2>Current balance</h2>
           <p id="currentBalance">100000$</p>
@@ -101,16 +101,16 @@
         <div class="accountInfo">
           <div class="inElements">
             <p class="inLabel">In</p>
-            <p class="inValue in">21000$</p>
+            <p class="inValue">21000$</p>
           </div>
           <div class="outElements">
             <p class="outLabel">Out</p>
-            <p class="outLabel out">5180$</p>
+            <p class="outValue">5180$</p>
           </div>
           <button class="sort">&#8595; SORT</button>
         </div>
       </div>
-    </div>
+    </main>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
