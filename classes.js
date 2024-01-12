@@ -25,8 +25,8 @@ export class Account {
   }
 
   sort() {
-    const sort = this.movements.sort((a, b) => a - b);
-    return sort
+    const sort = [...this.movements].sort((a, b) => b - a);
+    return sort;
   }
 }
 

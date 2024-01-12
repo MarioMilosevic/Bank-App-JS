@@ -62,12 +62,12 @@ accountManager.getAccounts().forEach((account) => {
 
 navBtn.addEventListener("click", function () {
   const account = login(accountManager.getAccounts());
-  welcomeBack.textContent = `Welcome back, ${account.owner}`
+  welcomeBack.textContent = `Welcome back, ${account.owner}`;
   const sumDeposit = account.totalDeposit();
   inValue.textContent = `${sumDeposit}$`;
   const sumWithdrawal = account.totalWithdrawal();
-  const balance = sumDeposit - (Math.abs(sumWithdrawal))
-  currentBalance.textContent = `${balance}$`
+  const balance = sumDeposit - Math.abs(sumWithdrawal);
+  currentBalance.textContent = `${balance}$`;
   outValue.textContent = `${sumWithdrawal}$`;
 });
 
@@ -84,7 +84,13 @@ const login = (accounts) => {
   });
   return acc;
 };
-console.log(acc);
+let sort = 0;
 sortBtn.addEventListener("click", function () {
-  console.log(acc.sort());
+  if (sort === 0) {
+    showMovements(transactions, acc.sort());
+    sort = 1;
+  } else {
+    showMovements(transactions, acc.getAccountMovements());
+    sort = 0;
+  }
 });
