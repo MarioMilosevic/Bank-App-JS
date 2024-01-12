@@ -104,8 +104,7 @@ nav input:last-of-type {
 }
 
 .transactions {
-  width: 47%;
-  height: 100%;
+  width: 50%;
   border: 1px solid white;
   border-radius: 2rem;
   overflow-y: scroll;
@@ -268,4 +267,38 @@ nav input:last-of-type {
 .movementValue {
   display: flex;
   align-items: center;
+}
+
+.accountInfo {
+  margin-top: 1rem;
+  width: 50%;
+  display: flex;
+  /* border: 1px solid white; */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accountInfo p {
+  font-size: 2rem;
+  padding: 0.8rem 1.6rem;
+}
+
+.inElements,
+.outElements {
+  display: flex;
+  width: 33%;
+  align-items: center;
+}
+
+.in {
+  color: #399e5a;
+}
+
+.out {
+  color: #ff4a1c;
+}
+
+.sort {
+  border-radius: 1rem;
+  padding: 0.6rem 1.2rem;
 }
