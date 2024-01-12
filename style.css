@@ -101,7 +101,6 @@ nav input:last-of-type {
   margin-top: 5rem;
   display: flex;
   justify-content: space-between;
-  height: 50rem;
 }
 
 .transactions {
@@ -110,6 +109,7 @@ nav input:last-of-type {
   border: 1px solid white;
   border-radius: 2rem;
   overflow-y: scroll;
+  padding: 2.5rem 2rem;
 }
 
 .options {
@@ -227,32 +227,45 @@ nav input:last-of-type {
 }
 /* Movements */
 
-.movement {
-  width: 80%;
+.movementContainer {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid white;
   margin: 0 auto;
   font-size: 2rem;
-  padding: 1rem;
-}
-
-.movementIndex {
-  display: flex;
-  width: 60%;
-  align-items: center;
-}
-
-.deposit, .withdrawal{
-  margin-left: 1.5rem;
-  border-radius: 2rem;
   padding: 1rem 2rem;
 }
 
-.deposit {
-  background-color: #399E5A;
+.indexType {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
 }
 
-.withdrawal{
-  background-color: #FF4A1C;
+.movement {
+  width: 75%;
+}
+
+.movement-type-Deposit,
+.movement-type-Withdrawal {
+  margin-left: 1.5rem;
+  border-radius: 2rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.movement-type-Deposit {
+  background-color: #399e5a;
+}
+
+.movement-type-Withdrawal {
+  background-color: #ff4a1c;
+}
+
+.movementValue {
+  display: flex;
+  align-items: center;
 }
