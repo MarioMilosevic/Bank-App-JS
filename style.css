@@ -109,6 +109,7 @@ nav input:last-of-type {
   height: 100%;
   border: 1px solid white;
   border-radius: 2rem;
+  overflow-y: scroll;
 }
 
 .options {
@@ -223,4 +224,35 @@ nav input:last-of-type {
   cursor: pointer;
   margin-right: 1rem;
   transform: translateY(50%);
+}
+/* Movements */
+
+.movement {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+  margin: 0 auto;
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+.movementIndex {
+  display: flex;
+  width: 60%;
+  align-items: center;
+}
+
+.deposit, .withdrawal{
+  margin-left: 1.5rem;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+}
+
+.deposit {
+  background-color: #399E5A;
+}
+
+.withdrawal{
+  background-color: #FF4A1C;
 }

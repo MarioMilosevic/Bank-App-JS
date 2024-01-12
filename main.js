@@ -66,7 +66,7 @@ navBtn.addEventListener("click", function () {
 const login = (accounts) => {
   accounts.forEach(account => {
     if(account.username === nameInput.value && account.pin === Number(passwordInput.value)){
-      console.log('if',account);
+      showMovements(transactions, account.movements)
       // return account
     }
   })
@@ -74,4 +74,4 @@ const login = (accounts) => {
   // treba da uzme od nekog od akaunta username i pasvord od tog unikatnog akaunta i samim tim da ucita njegov movement
 
 // console.log(account1.movements);
-  showMovements(transactions,account1.movements)
+  
