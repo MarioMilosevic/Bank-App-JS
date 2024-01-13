@@ -64,14 +64,17 @@ accountManager.getAccounts().forEach((account) => {
 navBtn.addEventListener("click", function () {
   acc = login(accountManager.getAccounts());
   welcomeBack.textContent = `Welcome back ${acc.owner.split(" ")[0]}`;
+  calculate()
   updateUI(acc);
-  // inValue.textContent = `${account.getDeposit()}$`;
-  // outValue.textContent = `${account.getWithdrawal()}$`;
-  // currentBalance.textContent = `${account.getBalance()}$`;
 });
 
-const updateUI = (acc) => {
+const calculate = () => {
+  acc.getDeposit()
+  acc.getWithdrawal()
   acc.calculateBalance();
+}
+
+const updateUI = (acc) => {
   inValue.textContent = `${acc.getDeposit()}$`;
   outValue.textContent = `${acc.getWithdrawal()}$`;
   currentBalance.textContent = `${acc.getBalance()}$`;
@@ -100,17 +103,35 @@ sortBtn.addEventListener("click", function () {
   }
 });
 
-// duplo vise moram imat na racunu od loan vrijednosti
-
 loanBtn.addEventListener("click", function () {
   const movement = Number(loanInput.value);
-  if (acc.getBalance() >= 2 * movement) {
+  if (acc.getBalance() >= 2 * movement && movement > 0) {
+    loanInput.value = "";
     acc.addMovement(movement);
     acc.addDeposit(movement);
+    acc.calculateBalance()
     showMovements(transactions, acc.getMovements());
     updateUI(acc);
-  } else {
-    console.log("Loan not approved.");
-    // Optional: Code to be executed if the condition is false
   }
 });
+
+transferBtn.addEventListener("click", function () {
+  // pronadjem akaunt koji odgovara imenu ili OWNER ili USERNAME
+  accountManager.getAccounts().forEach((account) => {
+    if ( account.owner === transferToInput.value) {
+      console.log(account);
+      console.log(acc);
+      // amount ubacim u njegov movements []
+      account.addMovement(Number(transferAmountInput.value))
+      acc.addMovement(Number(-transferAmountInput.value))
+  calculate()
+      updateUI()
+      console.log(account);
+      console.log(acc);
+    }
+  });
+  // taj isti amount trebam da sebi dodam u WITHDRAWAL
+  // izracunam ukupni withdrawal i balans i updateUI
+});
+
+console.log(account1);
