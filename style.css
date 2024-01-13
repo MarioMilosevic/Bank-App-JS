@@ -107,7 +107,7 @@ nav input:last-of-type {
   margin-top: 5rem;
   display: flex;
   justify-content: space-between;
-  /* min-height: 50rem; */
+  height: 45rem;
 }
 
 .transactions {
@@ -236,7 +236,6 @@ nav input:last-of-type {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid white;
   margin: 0 auto;
   font-size: 2rem;
   padding: 1rem 2rem;

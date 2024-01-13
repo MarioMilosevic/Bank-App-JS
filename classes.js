@@ -6,39 +6,59 @@ export class Account {
     this.movements = movements;
     this.interestRate = interestRate;
     this.pin = pin;
-    this.in = this.movements.filter((mov) => mov > 0).reduce((acc, curr) => acc + curr, 0);
-    this.out = this.movements.filter((mov) => mov < 0).reduce((acc, curr) => acc + curr, 0);
-    this.totalBalance = this.in - Math.abs(this.out);
+    this.in = this.movements
+      .filter((mov) => mov > 0)
+      .reduce((acc, curr) => acc + curr, 0);
+    this.out = this.movements
+      .filter((mov) => mov < 0)
+      .reduce((acc, curr) => acc + curr, 0);
+    this.totalBalance = 0;
   }
 
-  getAccountMovements() {
+  getMovements() {
     return this.movements;
   }
 
-  getDeposit(){
-    return this.in
+  getDeposit() {
+    return this.in;
   }
 
-  getWithdrawal(){
-    return this.out
+  getWithdrawal() {
+    return this.out;
   }
 
-  getBalance(){
-    return this.totalBalance
+  getBalance() {
+    return this.totalBalance;
+  }
+
+  addMovement(movement) {
+    this.movements.push(movement);
   }
   // totalDeposit() {
-  //   const sumDeposit = this.movements
+  //   this.in = this.movements
   //     .filter((mov) => mov > 0)
   //     .reduce((acc, curr) => acc + curr);
-  //   return sumDeposit;
   // }
 
   // totalWithdrawal() {
-  //   const sumWithdrawal = this.movements
+  //   this.out = this.movements
   //     .filter((mov) => mov < 0)
   //     .reduce((acc, curr) => acc + curr);
-  //   return sumWithdrawal;
   // }
+
+  
+
+  calculateBalance() {
+    this.totalBalance = this.in - Number(Math.abs(this.out));
+  }
+
+  addDeposit(value) {
+    this.in += value;
+  }
+
+  addWithdrawal(value) {
+    this.out += value;
+  }
 
   sort() {
     const sort = [...this.movements].sort((a, b) => b - a);

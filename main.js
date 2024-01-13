@@ -30,7 +30,6 @@ const accountManager = new AccountManager();
 let acc = "";
 let sort = false;
 
-
 accounts.forEach((account) => {
   accountManager.addAccount(account);
 });
@@ -63,17 +62,20 @@ accountManager.getAccounts().forEach((account) => {
 });
 
 navBtn.addEventListener("click", function () {
-  const account = login(accountManager.getAccounts());
-  welcomeBack.textContent = `Welcome back ${account.owner.split(' ')[0]}`;
-  inValue.textContent = `${account.getDeposit()}$`
-  outValue.textContent = `${account.getWithdrawal()}$`;
-  currentBalance.textContent = `${account.getBalance()}$`
-  // const sumDeposit = account.getDeposit();
-  // inValue.textContent = `${sumDeposit}$`;
-  // const sumWithdrawal = account.getWithdrawal();
-  // const balance = sumDeposit - Math.abs(sumWithdrawal);
-  // currentBalance.textContent = `${balance}$`;
+  acc = login(accountManager.getAccounts());
+  welcomeBack.textContent = `Welcome back ${acc.owner.split(" ")[0]}`;
+  updateUI(acc);
+  // inValue.textContent = `${account.getDeposit()}$`;
+  // outValue.textContent = `${account.getWithdrawal()}$`;
+  // currentBalance.textContent = `${account.getBalance()}$`;
 });
+
+const updateUI = (acc) => {
+  acc.calculateBalance();
+  inValue.textContent = `${acc.getDeposit()}$`;
+  outValue.textContent = `${acc.getWithdrawal()}$`;
+  currentBalance.textContent = `${acc.getBalance()}$`;
+};
 
 const login = (accounts) => {
   accounts.forEach((account) => {
@@ -93,25 +95,22 @@ sortBtn.addEventListener("click", function () {
     showMovements(transactions, acc.sort());
     sort = true;
   } else {
-    showMovements(transactions, acc.getAccountMovements());
+    showMovements(transactions, acc.getMovements());
     sort = false;
   }
 });
 
 // duplo vise moram imat na racunu od loan vrijednosti
 
-loanBtn.addEventListener('click', function(){
-  console.log(acc);
-  console.log(loanInput.value);
-  console.log(acc.getBalance());
-  
-  if (acc.getBalance() >= 2 * Number(loanInput.value)) {
-    console.log("Loan approved!");
-    // Add your additional logic or code that needs to be executed when the condition is true
+loanBtn.addEventListener("click", function () {
+  const movement = Number(loanInput.value);
+  if (acc.getBalance() >= 2 * movement) {
+    acc.addMovement(movement);
+    acc.addDeposit(movement);
+    showMovements(transactions, acc.getMovements());
+    updateUI(acc);
   } else {
     console.log("Loan not approved.");
     // Optional: Code to be executed if the condition is false
   }
 });
-
-
