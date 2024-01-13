@@ -64,20 +64,23 @@ accountManager.getAccounts().forEach((account) => {
 navBtn.addEventListener("click", function () {
   acc = login(accountManager.getAccounts());
   welcomeBack.textContent = `Welcome back ${acc.owner.split(" ")[0]}`;
-  calculate()
+  calculate(acc);
   updateUI(acc);
 });
 
-const calculate = () => {
-  acc.getDeposit()
-  acc.getWithdrawal()
+const calculate = (acc) => {
+  acc.getDeposit();
+  acc.getWithdrawal();
   acc.calculateBalance();
-}
+};
 
 const updateUI = (acc) => {
   inValue.textContent = `${acc.getDeposit()}$`;
   outValue.textContent = `${acc.getWithdrawal()}$`;
   currentBalance.textContent = `${acc.getBalance()}$`;
+  transferAmountInput.value = "";
+  transferToInput.value = "";
+  loanInput.value = "";
 };
 
 const login = (accounts) => {
@@ -86,7 +89,7 @@ const login = (accounts) => {
       account.username === nameInput.value &&
       account.pin === Number(passwordInput.value)
     ) {
-      // container.classList.remove("hidden");
+      container.classList.remove("hidden");
       showMovements(transactions, account.movements);
       acc = account;
     }
@@ -106,32 +109,27 @@ sortBtn.addEventListener("click", function () {
 loanBtn.addEventListener("click", function () {
   const movement = Number(loanInput.value);
   if (acc.getBalance() >= 2 * movement && movement > 0) {
-    loanInput.value = "";
-    acc.addMovement(movement);
-    acc.addDeposit(movement);
-    acc.calculateBalance()
-    showMovements(transactions, acc.getMovements());
-    updateUI(acc);
+    setTimeout(() => {
+      acc.addMovement(movement);
+      acc.addDeposit(movement);
+      acc.calculateBalance();
+      showMovements(transactions, acc.getMovements());
+      updateUI(acc);
+    }, 2000);
   }
 });
 
 transferBtn.addEventListener("click", function () {
-  // pronadjem akaunt koji odgovara imenu ili OWNER ili USERNAME
   accountManager.getAccounts().forEach((account) => {
-    if ( account.owner === transferToInput.value) {
-      console.log(account);
-      console.log(acc);
-      // amount ubacim u njegov movements []
-      account.addMovement(Number(transferAmountInput.value))
-      acc.addMovement(Number(-transferAmountInput.value))
-  calculate()
-      updateUI()
-      console.log(account);
-      console.log(acc);
+    if (account.owner === transferToInput.value) {
+      const movement = Number(transferAmountInput.value);
+      account.addMovement(movement);
+      account.addDeposit(movement);
+      acc.addMovement(-movement);
+      acc.addWithdrawal(movement);
+      calculate(acc);
+      showMovements(transactions, acc.getMovements());
+      updateUI(acc);
     }
   });
-  // taj isti amount trebam da sebi dodam u WITHDRAWAL
-  // izracunam ukupni withdrawal i balans i updateUI
 });
-
-console.log(account1);

@@ -59,7 +59,7 @@ export class Account {
   }
 
   addWithdrawal(value) {
-    this.out += value;
+    this.out -= value;
   }
 
   sort() {
