@@ -6,25 +6,39 @@ export class Account {
     this.movements = movements;
     this.interestRate = interestRate;
     this.pin = pin;
-    this.totalBalance = 0;
-    // in out
+    this.in = this.movements.filter((mov) => mov > 0).reduce((acc, curr) => acc + curr, 0);
+    this.out = this.movements.filter((mov) => mov < 0).reduce((acc, curr) => acc + curr, 0);
+    this.totalBalance = this.in - Math.abs(this.out);
   }
 
   getAccountMovements() {
     return this.movements;
   }
 
-  totalDeposit() {
-    const depositMovements = this.movements.filter((mov) => mov > 0);
-    const sumDeposit = depositMovements.reduce((acc, curr) => acc + curr);
-    return sumDeposit;
+  getDeposit(){
+    return this.in
   }
 
-  totalWithdrawal() {
-    const withdrawalMovements = this.movements.filter((mov) => mov < 0);
-    const sumWithdrawal = withdrawalMovements.reduce((acc, curr) => acc + curr);
-    return sumWithdrawal;
+  getWithdrawal(){
+    return this.out
   }
+
+  getBalance(){
+    return this.totalBalance
+  }
+  // totalDeposit() {
+  //   const sumDeposit = this.movements
+  //     .filter((mov) => mov > 0)
+  //     .reduce((acc, curr) => acc + curr);
+  //   return sumDeposit;
+  // }
+
+  // totalWithdrawal() {
+  //   const sumWithdrawal = this.movements
+  //     .filter((mov) => mov < 0)
+  //     .reduce((acc, curr) => acc + curr);
+  //   return sumWithdrawal;
+  // }
 
   sort() {
     const sort = [...this.movements].sort((a, b) => b - a);

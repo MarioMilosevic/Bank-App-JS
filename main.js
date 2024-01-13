@@ -65,12 +65,14 @@ accountManager.getAccounts().forEach((account) => {
 navBtn.addEventListener("click", function () {
   const account = login(accountManager.getAccounts());
   welcomeBack.textContent = `Welcome back ${account.owner.split(' ')[0]}`;
-  const sumDeposit = account.totalDeposit();
-  inValue.textContent = `${sumDeposit}$`;
-  const sumWithdrawal = account.totalWithdrawal();
-  const balance = sumDeposit - Math.abs(sumWithdrawal);
-  currentBalance.textContent = `${balance}$`;
-  outValue.textContent = `${sumWithdrawal}$`;
+  inValue.textContent = `${account.getDeposit()}$`
+  outValue.textContent = `${account.getWithdrawal()}$`;
+  currentBalance.textContent = `${account.getBalance()}$`
+  // const sumDeposit = account.getDeposit();
+  // inValue.textContent = `${sumDeposit}$`;
+  // const sumWithdrawal = account.getWithdrawal();
+  // const balance = sumDeposit - Math.abs(sumWithdrawal);
+  // currentBalance.textContent = `${balance}$`;
 });
 
 const login = (accounts) => {
@@ -79,7 +81,7 @@ const login = (accounts) => {
       account.username === nameInput.value &&
       account.pin === Number(passwordInput.value)
     ) {
-      container.classList.remove("hidden");
+      // container.classList.remove("hidden");
       showMovements(transactions, account.movements);
       acc = account;
     }
@@ -96,4 +98,20 @@ sortBtn.addEventListener("click", function () {
   }
 });
 
-// duplo vise moram imat od loana
+// duplo vise moram imat na racunu od loan vrijednosti
+
+loanBtn.addEventListener('click', function(){
+  console.log(acc);
+  console.log(loanInput.value);
+  console.log(acc.getBalance());
+  
+  if (acc.getBalance() >= 2 * Number(loanInput.value)) {
+    console.log("Loan approved!");
+    // Add your additional logic or code that needs to be executed when the condition is true
+  } else {
+    console.log("Loan not approved.");
+    // Optional: Code to be executed if the condition is false
+  }
+});
+
+
