@@ -12,3 +12,9 @@ export const showMovements = (parent, movements) => {
     parent.appendChild(mov);
   });
 };
+
+export const calculate = (account) => {
+  account.getDeposit();
+  account.getWithdrawal();
+  account.calculateBalance();
+};

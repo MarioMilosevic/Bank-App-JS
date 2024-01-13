@@ -1,7 +1,7 @@
 "use strict";
 import { initQuerySelectors } from "./initQuerySelectors";
 import { Account, AccountManager } from "./classes";
-import { showMovements } from "./helpers";
+import { showMovements, calculate } from "./helpers";
 
 const account1 = new Account(
   "Mario Milosevic",
@@ -40,7 +40,6 @@ const {
   passwordInput,
   currentBalance,
   navBtn,
-  transactionsDiv,
   transferToInput,
   transferAmountInput,
   transferBtn,
@@ -68,11 +67,11 @@ navBtn.addEventListener("click", function () {
   updateUI(acc);
 });
 
-const calculate = (acc) => {
-  acc.getDeposit();
-  acc.getWithdrawal();
-  acc.calculateBalance();
-};
+// const calculate = (acc) => {
+//   acc.getDeposit();
+//   acc.getWithdrawal();
+//   acc.calculateBalance();
+// };
 
 const updateUI = (acc) => {
   inValue.textContent = `${acc.getDeposit()}$`;
@@ -81,6 +80,8 @@ const updateUI = (acc) => {
   transferAmountInput.value = "";
   transferToInput.value = "";
   loanInput.value = "";
+  nameInput.value = "";
+  passwordInput.value = "";
 };
 
 const login = (accounts) => {
