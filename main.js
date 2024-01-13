@@ -67,36 +67,6 @@ navBtn.addEventListener("click", function () {
   updateUI(acc);
 });
 
-// const calculate = (acc) => {
-//   acc.getDeposit();
-//   acc.getWithdrawal();
-//   acc.calculateBalance();
-// };
-
-const updateUI = (acc) => {
-  inValue.textContent = `${acc.getDeposit()}$`;
-  outValue.textContent = `${acc.getWithdrawal()}$`;
-  currentBalance.textContent = `${acc.getBalance()}$`;
-  transferAmountInput.value = "";
-  transferToInput.value = "";
-  loanInput.value = "";
-  nameInput.value = "";
-  passwordInput.value = "";
-};
-
-const login = (accounts) => {
-  accounts.forEach((account) => {
-    if (
-      account.username === nameInput.value &&
-      account.pin === Number(passwordInput.value)
-    ) {
-      container.classList.remove("hidden");
-      showMovements(transactions, account.movements);
-      acc = account;
-    }
-  });
-  return acc;
-};
 sortBtn.addEventListener("click", function () {
   if (!sort) {
     showMovements(transactions, acc.sort());
@@ -134,3 +104,28 @@ transferBtn.addEventListener("click", function () {
     }
   });
 });
+
+const updateUI = (acc) => {
+  inValue.textContent = `${acc.getDeposit()}$`;
+  outValue.textContent = `${acc.getWithdrawal()}$`;
+  currentBalance.textContent = `${acc.getBalance()}$`;
+  transferAmountInput.value = "";
+  transferToInput.value = "";
+  loanInput.value = "";
+  nameInput.value = "";
+  passwordInput.value = "";
+};
+
+const login = (accounts) => {
+  accounts.forEach((account) => {
+    if (
+      account.username === nameInput.value &&
+      account.pin === Number(passwordInput.value)
+    ) {
+      container.classList.remove("hidden");
+      showMovements(transactions, account.movements);
+      acc = account;
+    }
+  });
+  return acc;
+};
