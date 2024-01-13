@@ -1,6 +1,6 @@
 "use strict";
 
-export const constants = () => {
+export const initQuerySelectors = () => {
   const welcomeBack = document.querySelector("#welcomeBack");
   const nameInput = document.querySelector("#nameInput");
   const passwordInput = document.querySelector("#passwordInput");

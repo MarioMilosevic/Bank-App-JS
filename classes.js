@@ -6,6 +6,8 @@ export class Account {
     this.movements = movements;
     this.interestRate = interestRate;
     this.pin = pin;
+    this.totalBalance = 0;
+    // in out
   }
 
   getAccountMovements() {

@@ -1,5 +1,5 @@
 "use strict";
-import { constants } from "./constants";
+import { initQuerySelectors } from "./initQuerySelectors";
 import { Account, AccountManager } from "./classes";
 import { showMovements } from "./helpers";
 
@@ -28,6 +28,8 @@ const accounts = [account1, account2, account3, account4];
 
 const accountManager = new AccountManager();
 let acc = "";
+let sort = false;
+
 
 accounts.forEach((account) => {
   accountManager.addAccount(account);
@@ -50,7 +52,7 @@ const {
   sortBtn,
   transactions,
   container,
-} = constants();
+} = initQuerySelectors();
 
 accountManager.getAccounts().forEach((account) => {
   account.username = account.owner
@@ -62,7 +64,7 @@ accountManager.getAccounts().forEach((account) => {
 
 navBtn.addEventListener("click", function () {
   const account = login(accountManager.getAccounts());
-  welcomeBack.textContent = `Welcome back, ${account.owner}`;
+  welcomeBack.textContent = `Welcome back ${account.owner.split(' ')[0]}`;
   const sumDeposit = account.totalDeposit();
   inValue.textContent = `${sumDeposit}$`;
   const sumWithdrawal = account.totalWithdrawal();
@@ -84,13 +86,14 @@ const login = (accounts) => {
   });
   return acc;
 };
-let sort = 0;
 sortBtn.addEventListener("click", function () {
-  if (sort === 0) {
+  if (!sort) {
     showMovements(transactions, acc.sort());
-    sort = 1;
+    sort = true;
   } else {
     showMovements(transactions, acc.getAccountMovements());
-    sort = 0;
+    sort = false;
   }
 });
+
+// duplo vise moram imat od loana
