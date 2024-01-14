@@ -38,17 +38,6 @@ export class Account {
   addMovement(movement) {
     this.movements.push(movement);
   }
-  // totalDeposit() {
-  //   this.in = this.movements
-  //     .filter((mov) => mov > 0)
-  //     .reduce((acc, curr) => acc + curr);
-  // }
-
-  // totalWithdrawal() {
-  //   this.out = this.movements
-  //     .filter((mov) => mov < 0)
-  //     .reduce((acc, curr) => acc + curr);
-  // }
 
   calculateBalance() {
     this.totalBalance = this.in - Number(Math.abs(this.out));
